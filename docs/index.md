@@ -23,6 +23,7 @@ To install the project, clone the repository and install the dependencies using 
 git clone https://github.com/elkronos/sample_py.git
 cd sample_py
 pip install -r requirements.txt
+```
 
 ## Usage
 
