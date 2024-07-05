@@ -51,6 +51,7 @@ from sampling import sampling_methods
 data = pd.read_csv('your_dataset.csv')
 sampled_data = sampling_methods.simple_random_sampling(data, sample_size=100, seed=42)
 print(sampled_data)
+```
 
 ### Stratified Sampling
 
@@ -76,6 +77,7 @@ from sampling import sampling_methods
 data = pd.read_csv('your_dataset.csv')
 stratified_sampled_data = sampling_methods.stratified_sampling(data, strata_column='category', sample_size=50, seed=42)
 print(stratified_sampled_data)
+```
 
 ### Systematic Sampling
 
@@ -100,6 +102,7 @@ from sampling import sampling_methods
 data = pd.read_csv('your_dataset.csv')
 systematic_sampled_data = sampling_methods.systematic_sampling(data, interval=10, seed=42)
 print(systematic_sampled_data)
+```
 
 ### Cluster Sampling
 
@@ -124,6 +127,7 @@ from sampling import sampling_methods
 data = pd.read_csv('your_dataset.csv')
 cluster_sampled_data = sampling_methods.cluster_sampling(data, cluster_column='cluster_id', num_clusters=5, seed=42)
 print(cluster_sampled_data)
+```
 
 ### Multi-Stage Sampling
 
@@ -156,6 +160,7 @@ multi_stage_sampled_data = sampling_methods.multi_stage_sampling(
     seed=42
 )
 print(multi_stage_sampled_data)
+```
 
 ### Weighted Sampling
 
@@ -181,6 +186,7 @@ from sampling import sampling_methods
 data = pd.read_csv('your_dataset.csv')
 weighted_sampled_data = sampling_methods.weighted_sampling(data, weights_column='weights', sample_size=100, seed=42)
 print(weighted_sampled_data)
+```
 
 ### Reservoir Sampling
 
@@ -205,6 +211,7 @@ data = pd.read_csv('your_dataset.csv')
 data_stream = data.to_dict('records')
 reservoir_sample = sampling_methods.reservoir_sampling(data_stream, sample_size=100, seed=42)
 print(reservoir_sample)
+```
 
 ### Bootstrap Sampling
 
@@ -232,6 +239,7 @@ bootstrap_samples = sampling_methods.bootstrap_sampling(data, num_samples=10, sa
 for i, sample in enumerate(bootstrap_samples):
     print(f"Bootstrap Sample {i+1}")
     print(sample)
+```
 
 ### Temporal Sampling
 
@@ -268,6 +276,7 @@ temporal_sampled_data = sampling_methods.temporal_sampling(
     seed=42
 )
 print(temporal_sampled_data)
+```
 
 ### Spatial Sampling
 
@@ -303,10 +312,11 @@ spatial_sampled_data = sampling_methods.spatial_sampling(
     seed=42
 )
 print(spatial_sampled_data)
+```
 
 ## Contributing
 
-We welcome contributions to the Sample_Py project! If you would like to contribute, please follow these steps:
+I welcome contributions to the Sample_Py project! If you would like to contribute, please follow these steps:
 
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix.
