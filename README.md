@@ -38,7 +38,7 @@ This project provides a collection of functions for performing different types o
 
 ## Installation
 
-To install the project, you can clone the repository and install the dependencies using `pip`.
+To install the project, clone the repository and install the dependencies using `pip`:
 
 ```bash
 git clone https://github.com/elkronos/sample_py.git
@@ -68,8 +68,19 @@ print(sampled_data)
 ### Stratified Sampling
 
 ```python
-# Perform stratified sampling
-stratified_sampled_data = sampling_methods.stratified_sampling(data, strata_column='category', sample_size=50, seed=42)
+import pandas as pd
+from sampling import sampling_methods
+
+# Load your data
+data = pd.read_csv('your_dataset.csv')
+
+# Perform stratified sampling based on a 'category' column
+stratified_sampled_data = sampling_methods.stratified_sampling(
+    data, 
+    strata_column='category', 
+    sample_size=50, 
+    seed=42
+)
 
 print(stratified_sampled_data)
 ```
@@ -77,7 +88,13 @@ print(stratified_sampled_data)
 ### Systematic Sampling
 
 ```python
-# Perform systematic sampling
+import pandas as pd
+from sampling import sampling_methods
+
+# Load your data
+data = pd.read_csv('your_dataset.csv')
+
+# Perform systematic sampling with an interval of 10
 systematic_sampled_data = sampling_methods.systematic_sampling(data, interval=10, seed=42)
 
 print(systematic_sampled_data)
@@ -86,8 +103,19 @@ print(systematic_sampled_data)
 ### Cluster Sampling
 
 ```python
-# Perform cluster sampling
-cluster_sampled_data = sampling_methods.cluster_sampling(data, cluster_column='cluster_id', num_clusters=5, seed=42)
+import pandas as pd
+from sampling import sampling_methods
+
+# Load your data
+data = pd.read_csv('your_dataset.csv')
+
+# Perform cluster sampling based on a 'cluster_id' column
+cluster_sampled_data = sampling_methods.cluster_sampling(
+    data, 
+    cluster_column='cluster_id', 
+    num_clusters=5, 
+    seed=42
+)
 
 print(cluster_sampled_data)
 ```
@@ -95,8 +123,20 @@ print(cluster_sampled_data)
 ### Multi-Stage Sampling
 
 ```python
-# Perform multi-stage sampling
-multi_stage_sampled_data = sampling_methods.multi_stage_sampling(data, cluster_column='cluster_id', num_clusters=5, stage_two_sample_size=10, seed=42)
+import pandas as pd
+from sampling import sampling_methods
+
+# Load your data
+data = pd.read_csv('your_dataset.csv')
+
+# Perform multi-stage sampling: first by clusters, then sample within clusters
+multi_stage_sampled_data = sampling_methods.multi_stage_sampling(
+    data, 
+    cluster_column='cluster_id', 
+    num_clusters=5, 
+    stage_two_sample_size=10, 
+    seed=42
+)
 
 print(multi_stage_sampled_data)
 ```
@@ -104,8 +144,19 @@ print(multi_stage_sampled_data)
 ### Weighted Sampling
 
 ```python
-# Perform weighted sampling
-weighted_sampled_data = sampling_methods.weighted_sampling(data, weights_column='weights', sample_size=100, seed=42)
+import pandas as pd
+from sampling import sampling_methods
+
+# Load your data
+data = pd.read_csv('your_dataset.csv')
+
+# Perform weighted sampling based on a 'weights' column
+weighted_sampled_data = sampling_methods.weighted_sampling(
+    data, 
+    weights_column='weights', 
+    sample_size=100, 
+    seed=42
+)
 
 print(weighted_sampled_data)
 ```
@@ -113,8 +164,14 @@ print(weighted_sampled_data)
 ### Reservoir Sampling
 
 ```python
-# Perform reservoir sampling on a data stream
+import pandas as pd
+from sampling import sampling_methods
+
+# Load your data and convert it to a data stream (list of records)
+data = pd.read_csv('your_dataset.csv')
 data_stream = data.to_dict('records')
+
+# Perform reservoir sampling
 reservoir_sample = sampling_methods.reservoir_sampling(data_stream, sample_size=100, seed=42)
 
 print(reservoir_sample)
@@ -123,7 +180,13 @@ print(reservoir_sample)
 ### Bootstrap Sampling
 
 ```python
-# Perform bootstrap sampling
+import pandas as pd
+from sampling import sampling_methods
+
+# Load your data
+data = pd.read_csv('your_dataset.csv')
+
+# Perform bootstrap sampling to generate 10 bootstrap samples
 bootstrap_samples = sampling_methods.bootstrap_sampling(data, num_samples=10, sample_size=100, seed=42)
 
 for i, sample in enumerate(bootstrap_samples):
@@ -134,8 +197,22 @@ for i, sample in enumerate(bootstrap_samples):
 ### Temporal Sampling
 
 ```python
-# Perform temporal sampling
-temporal_sampled_data = sampling_methods.temporal_sampling(data, time_column='timestamp', start_time=pd.Timestamp('2021-01-01'), end_time=pd.Timestamp('2021-12-31'), interval=7, sample_size=10, seed=42)
+import pandas as pd
+from sampling import sampling_methods
+
+# Load your data
+data = pd.read_csv('your_dataset.csv')
+
+# Perform temporal sampling on a time-based column 'timestamp'
+temporal_sampled_data = sampling_methods.temporal_sampling(
+    data, 
+    time_column='timestamp', 
+    start_time=pd.Timestamp('2021-01-01'), 
+    end_time=pd.Timestamp('2021-12-31'), 
+    interval=7, 
+    sample_size=10, 
+    seed=42
+)
 
 print(temporal_sampled_data)
 ```
@@ -143,13 +220,25 @@ print(temporal_sampled_data)
 ### Spatial Sampling
 
 ```python
+import pandas as pd
 from shapely.geometry import Polygon
+from sampling import sampling_methods
+
+# Load your data
+data = pd.read_csv('your_dataset.csv')
 
 # Define a region as a polygon
 region = Polygon([(-10, -10), (-10, 10), (10, 10), (10, -10)])
 
-# Perform spatial sampling
-spatial_sampled_data = sampling_methods.spatial_sampling(data, latitude_column='lat', longitude_column='lon', region=region, sample_size=100, seed=42)
+# Perform spatial sampling based on latitude and longitude columns
+spatial_sampled_data = sampling_methods.spatial_sampling(
+    data, 
+    latitude_column='lat', 
+    longitude_column='lon', 
+    region=region, 
+    sample_size=100, 
+    seed=42
+)
 
 print(spatial_sampled_data)
 ```
@@ -167,9 +256,18 @@ pytest
 If you would like to contribute to this project, please follow these steps:
 
 1. Fork the repository.
-2. Create a new branch: `git checkout -b feature-branch-name`.
-3. Make your changes and commit them: `git commit -m 'Add some feature'`.
-4. Push to the branch: `git push origin feature-branch-name`.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature-branch-name
+   ```
+3. Make your changes and commit them:
+   ```bash
+   git commit -m 'Add some feature'
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature-branch-name
+   ```
 5. Submit a pull request.
 
 Please ensure your code adheres to the project's coding standards and includes appropriate tests.
@@ -182,4 +280,4 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 If you have any questions or suggestions, feel free to reach out to:
 
-- jchase.msu@gmail.com
+- [jchase.msu@gmail.com](mailto:jchase.msu@gmail.com)
