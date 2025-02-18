@@ -11,7 +11,6 @@ from .sampling_methods import (
     spatial_sampling
 )
 
-
 __all__ = [
     'simple_random_sampling',
     'stratified_sampling',
