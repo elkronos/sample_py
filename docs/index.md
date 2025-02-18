@@ -17,7 +17,7 @@ Sample_Py is a Python project that provides various sampling methods for data an
 
 ## Installation
 
-To install the project, clone the repository and install the dependencies using `pip`:
+Clone the repository and install the dependencies using `pip`:
 
 ```bash
 git clone https://github.com/elkronos/sample_py.git
@@ -27,23 +27,22 @@ pip install -r requirements.txt
 
 ## Usage
 
-Here are detailed descriptions and examples of how to use the sampling functions provided in this project:
+Below are detailed descriptions and examples of the sampling functions provided in this project.
 
 ### Simple Random Sampling
 
 **Function**: `simple_random_sampling`
 
-**Description**: Performs simple random sampling on a given DataFrame.
+Performs simple random sampling on a given DataFrame.
 
 **Parameters**:
-- `data` (pd.DataFrame): The input DataFrame to sample from.
-- `sample_size` (int): The number of samples to draw.
+- `data` (pd.DataFrame): The input DataFrame.
+- `sample_size` (int): Number of samples to draw.
 - `max_rows` (Optional[int]): Maximum number of rows to return. Defaults to None.
-- `replace` (bool): Whether to sample with replacement. Defaults to False.
+- `replace` (bool): Sample with replacement. Defaults to False.
 - `seed` (Optional[int]): Seed for random number generator. Defaults to None.
 
 **Example**:
-
 ```python
 import pandas as pd
 from sampling import sampling_methods
@@ -57,19 +56,18 @@ print(sampled_data)
 
 **Function**: `stratified_sampling`
 
-**Description**: Performs stratified sampling on a given DataFrame based on a specified column.
+Performs stratified sampling on a DataFrame based on a specified column.
 
 **Parameters**:
-- `data` (pd.DataFrame): The input DataFrame to sample from.
-- `strata_column` (str): The column to use for stratification.
-- `sample_size` (int): The number of samples to draw from each stratum.
+- `data` (pd.DataFrame): The input DataFrame.
+- `strata_column` (str): Column used for stratification.
+- `sample_size` (int): Number of samples to draw from each stratum.
 - `max_rows` (Optional[int]): Maximum number of rows to return. Defaults to None.
-- `replace` (bool): Whether to sample with replacement. Defaults to False.
-- `equal_samples` (bool): Whether to sample an equal number of observations from each stratum. Defaults to False.
+- `replace` (bool): Sample with replacement. Defaults to False.
+- `equal_samples` (bool): Sample an equal number from each stratum. Defaults to False.
 - `seed` (Optional[int]): Seed for random number generator. Defaults to None.
 
 **Example**:
-
 ```python
 import pandas as pd
 from sampling import sampling_methods
@@ -83,18 +81,17 @@ print(stratified_sampled_data)
 
 **Function**: `systematic_sampling`
 
-**Description**: Performs systematic sampling on a given DataFrame.
+Performs systematic sampling on a DataFrame.
 
 **Parameters**:
-- `data` (pd.DataFrame): The input DataFrame to sample from.
-- `interval` (int): The interval at which to sample.
-- `start` (Optional[int]): The starting index for sampling. Defaults to None.
+- `data` (pd.DataFrame): The input DataFrame.
+- `interval` (int): Interval at which to sample.
+- `start` (Optional[int]): Starting index for sampling. Defaults to None.
 - `max_rows` (Optional[int]): Maximum number of rows to return. Defaults to None.
-- `sort_column` (Optional[str]): Column to sort the DataFrame by before sampling. Defaults to None.
+- `sort_column` (Optional[str]): Column to sort the DataFrame before sampling. Defaults to None.
 - `seed` (Optional[int]): Seed for random number generator. Defaults to None.
 
 **Example**:
-
 ```python
 import pandas as pd
 from sampling import sampling_methods
@@ -108,18 +105,17 @@ print(systematic_sampled_data)
 
 **Function**: `cluster_sampling`
 
-**Description**: Performs cluster sampling on a given DataFrame based on a specified column.
+Performs cluster sampling on a DataFrame based on a specified column.
 
 **Parameters**:
-- `data` (pd.DataFrame): The input DataFrame to sample from.
-- `cluster_column` (str): The column to use for clustering.
-- `num_clusters` (int): The number of clusters to sample.
+- `data` (pd.DataFrame): The input DataFrame.
+- `cluster_column` (str): Column used for clustering.
+- `num_clusters` (int): Number of clusters to sample.
 - `max_rows` (Optional[int]): Maximum number of rows to return. Defaults to None.
-- `balanced` (bool): Whether to balance the samples across clusters. Defaults to False.
+- `balanced` (bool): Balance the samples across clusters. Defaults to False.
 - `seed` (Optional[int]): Seed for random number generator. Defaults to None.
 
 **Example**:
-
 ```python
 import pandas as pd
 from sampling import sampling_methods
@@ -133,20 +129,19 @@ print(cluster_sampled_data)
 
 **Function**: `multi_stage_sampling`
 
-**Description**: Performs multi-stage sampling on a given DataFrame based on a specified cluster column.
+Performs multi-stage sampling on a DataFrame based on a specified cluster column.
 
 **Parameters**:
-- `data` (pd.DataFrame): The input DataFrame to sample from.
-- `cluster_column` (str): The column to use for clustering.
-- `num_clusters` (int): The number of clusters to sample in the first stage.
-- `stage_two_sample_size` (int): The number of samples to draw from each selected cluster in the second stage.
+- `data` (pd.DataFrame): The input DataFrame.
+- `cluster_column` (str): Column used for clustering.
+- `num_clusters` (int): Number of clusters to sample in the first stage.
+- `stage_two_sample_size` (int): Number of samples from each selected cluster in the second stage.
 - `max_rows` (Optional[int]): Maximum number of rows to return. Defaults to None.
-- `proportional_stage_two` (bool): Whether to sample proportionally from each cluster in the second stage. Defaults to False.
-- `replace` (bool): Whether to sample with replacement. Defaults to False.
+- `proportional_stage_two` (bool): Sample proportionally from each cluster in the second stage. Defaults to False.
+- `replace` (bool): Sample with replacement. Defaults to False.
 - `seed` (Optional[int]): Seed for random number generator. Defaults to None.
 
 **Example**:
-
 ```python
 import pandas as pd
 from sampling import sampling_methods
@@ -166,19 +161,18 @@ print(multi_stage_sampled_data)
 
 **Function**: `weighted_sampling`
 
-**Description**: Performs weighted sampling on a given DataFrame based on a specified weights column.
+Performs weighted sampling on a DataFrame based on a specified weights column.
 
 **Parameters**:
-- `data` (pd.DataFrame): The input DataFrame to sample from.
-- `weights_column` (str): The column to use for weights.
-- `sample_size` (int): The number of samples to draw.
+- `data` (pd.DataFrame): The input DataFrame.
+- `weights_column` (str): Column used for weights.
+- `sample_size` (int): Number of samples to draw.
 - `max_rows` (Optional[int]): Maximum number of rows to return. Defaults to None.
-- `replace` (bool): Whether to sample with replacement. Defaults to False.
-- `normalization` (Optional[str]): Method for normalizing weights ('min-max' or 'z-score'). Defaults to None.
+- `replace` (bool): Sample with replacement. Defaults to False.
+- `normalization` (Optional[str]): Weight normalization method ('min-max' or 'z-score'). Defaults to None.
 - `seed` (Optional[int]): Seed for random number generator. Defaults to None.
 
 **Example**:
-
 ```python
 import pandas as pd
 from sampling import sampling_methods
@@ -192,17 +186,16 @@ print(weighted_sampled_data)
 
 **Function**: `reservoir_sampling`
 
-**Description**: Performs reservoir sampling on a given data stream or DataFrame.
+Performs reservoir sampling on a data stream or DataFrame.
 
 **Parameters**:
-- `data_stream` (Union[pd.DataFrame, List]): The input data stream or DataFrame to sample from.
-- `sample_size` (int): The number of samples to draw.
+- `data_stream` (Union[pd.DataFrame, List]): Input data stream or DataFrame.
+- `sample_size` (int): Number of samples to draw.
 - `max_rows` (Optional[int]): Maximum number of rows to return. Defaults to None.
-- `handle_infinite_stream` (bool): Whether to handle infinite data streams by breaking early. Defaults to False.
+- `handle_infinite_stream` (bool): Handle infinite data streams by breaking early. Defaults to False.
 - `seed` (Optional[int]): Seed for random number generator. Defaults to None.
 
 **Example**:
-
 ```python
 import pandas as pd
 from sampling import sampling_methods
@@ -217,18 +210,17 @@ print(reservoir_sample)
 
 **Function**: `bootstrap_sampling`
 
-**Description**: Performs bootstrap sampling on a given DataFrame.
+Performs bootstrap sampling on a DataFrame.
 
 **Parameters**:
-- `data` (pd.DataFrame): The input DataFrame to sample from.
-- `num_samples` (int): The number of bootstrap samples to generate.
-- `sample_size` (int): The size of each bootstrap sample.
+- `data` (pd.DataFrame): The input DataFrame.
+- `num_samples` (int): Number of bootstrap samples to generate.
+- `sample_size` (int): Size of each bootstrap sample.
 - `max_rows` (Optional[int]): Maximum number of rows to return. Defaults to None.
-- `method` (str): Method for bootstrap sampling ('simple' or 'block'). Defaults to 'simple'.
+- `method` (str): Bootstrap sampling method ('simple' or 'block'). Defaults to 'simple'.
 - `seed` (Optional[int]): Seed for random number generator. Defaults to None.
 
 **Example**:
-
 ```python
 import pandas as pd
 from sampling import sampling_methods
@@ -245,22 +237,21 @@ for i, sample in enumerate(bootstrap_samples):
 
 **Function**: `temporal_sampling`
 
-**Description**: Performs temporal sampling on a given DataFrame based on a specified time column.
+Performs temporal sampling on a DataFrame based on a specified time column.
 
 **Parameters**:
-- `data` (pd.DataFrame): The input DataFrame to sample from.
-- `time_column` (str): The column to use for time-based sampling.
-- `start_time` (pd.Timestamp): The start time for the sampling period.
-- `end_time` (pd.Timestamp): The end time for the sampling period.
-- `interval` (int): The interval at which to sample.
-- `sample_size` (int): The number of samples to draw in each interval.
+- `data` (pd.DataFrame): The input DataFrame.
+- `time_column` (str): Column used for time-based sampling.
+- `start_time` (pd.Timestamp): Start time for sampling.
+- `end_time` (pd.Timestamp): End time for sampling.
+- `interval` (int): Interval at which to sample.
+- `sample_size` (int): Number of samples to draw in each interval.
 - `max_rows` (Optional[int]): Maximum number of rows to return. Defaults to None.
 - `time_zone` (Optional[str]): Time zone for the time column. Defaults to None.
-- `unit` (str): The unit of time for the interval ('days', 'weeks', 'months'). Defaults to 'days'.
+- `unit` (str): Unit of time for the interval ('days', 'weeks', 'months'). Defaults to 'days'.
 - `seed` (Optional[int]): Seed for random number generator. Defaults to None.
 
 **Example**:
-
 ```python
 import pandas as pd
 from sampling import sampling_methods
@@ -282,20 +273,19 @@ print(temporal_sampled_data)
 
 **Function**: `spatial_sampling`
 
-**Description**: Performs spatial sampling on a given DataFrame based on specified latitude and longitude columns.
+Performs spatial sampling on a DataFrame based on specified latitude and longitude columns.
 
 **Parameters**:
-- `data` (pd.DataFrame): The input DataFrame to sample from.
-- `latitude_column` (str): The column to use for latitude.
-- `longitude_column` (str): The column to use for longitude.
-- `region` (Union[Polygon, List[Polygon]]): The region or list of regions to sample within.
-- `sample_size` (int): The number of samples to draw.
+- `data` (pd.DataFrame): The input DataFrame.
+- `latitude_column` (str): Column used for latitude.
+- `longitude_column` (str): Column used for longitude.
+- `region` (Union[Polygon, List[Polygon]]): Region or list of regions to sample within.
+- `sample_size` (int): Number of samples to draw.
 - `max_rows` (Optional[int]): Maximum number of rows to return. Defaults to None.
-- `complex_region` (bool): Whether the region is a complex polygon. Defaults to False.
+- `complex_region` (bool): Indicates if the region is a complex polygon. Defaults to False.
 - `seed` (Optional[int]): Seed for random number generator. Defaults to None.
 
 **Example**:
-
 ```python
 import pandas as pd
 from shapely.geometry import Polygon
@@ -316,7 +306,7 @@ print(spatial_sampled_data)
 
 ## Contributing
 
-I welcome contributions to the Sample_Py project! If you would like to contribute, please follow these steps:
+Contributions to Sample_Py are welcome! To contribute:
 
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix.
@@ -336,7 +326,7 @@ For questions, suggestions, or issues, please contact the project maintainers:
 
 ## Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to this project will be documented here.
 
 ### [Unreleased]
 
